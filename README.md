@@ -1,14 +1,10 @@
 <div align="center">
 
-<a href="https://github.com/YuTaoV5/Web-guide-skill">
-<img width="1500" height="500" alt="web-guide" src="https://github.com/user-attachments/assets/a6f310af-8fed-4766-9649-b190575b399d" />
-</a>
-
 <br/>
 <br/>
 
 <div align="center">
-    <strong>Browser automation guidance and experience archival system for OpenClaw.</strong>
+    <strong>Browser automation guidance and experience archival system for OpenCode.</strong>
     <br />
     <br />
 </div>
