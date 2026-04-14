@@ -1,0 +1,30 @@
+{
+  "name": "web-guide",
+  "description": "浏览器自动化操作指导系统",
+  "triggers": [
+    {
+      "input": "帮我登录 jif8.net",
+      "expected": "触发 web-guide skill，引导用户完成浏览器自动化操作"
+    },
+    {
+      "input": "获取 V2Ray 订阅",
+      "expected": "自动匹配并执行已归档的 jif8-v2ray-subscribe 方法"
+    },
+    {
+      "input": "帮我操作浏览器点击按钮",
+      "expected": "触发 web-guide skill 进行引导"
+    }
+  ],
+  "testCases": [
+    {
+      "name": "方法列表查询",
+      "command": "node scripts/method-archiver.js list",
+      "expectedOutput": "包含已归档方法列表"
+    },
+    {
+      "name": "方法加载",
+      "command": "node -e \"const {MethodExecutor} = require('./scripts/method-executor'); const e = new MethodExecutor(); console.log(e.loadMethod('jif8')?.name || '未找到')\"",
+      "expectedOutput": "JIF8 V2Ray 订阅获取"
+    }
+  ]
+}

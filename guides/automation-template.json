@@ -1,0 +1,94 @@
+{
+  "name": "新浏览器自动化流程模板",
+  "description": "用于记录新的浏览器自动化操作流程的模板",
+  "fields": {
+    "name": "流程名称（中文描述性名称）",
+    "keywords": ["触发关键字1", "触发关键字2"],
+    "description": "流程的详细描述",
+    "website": {
+      "url": "目标网站 URL",
+      "loginRequired": false,
+      "loginFields": {
+        "username": "#username-selector",
+        "password": "#password-selector",
+        "submit": ".login-button-selector"
+      }
+    },
+    "steps": [
+      {
+        "order": 1,
+        "action": "goto|fill|click|wait|scroll|evaluate",
+        "target": "操作目标（URL、选择器、等待毫秒数等）",
+        "description": "步骤描述",
+        "optional": false,
+        "errorHandling": "如果失败如何处理"
+      }
+    ],
+    "resultExtraction": {
+      "type": "clipboard|attribute|text|evaluate",
+      "target": "提取目标"
+    }
+  },
+  "example": {
+    "name": "示例网站登录",
+    "keywords": ["示例", "登录"],
+    "description": "登录示例网站并获取用户信息",
+    "website": {
+      "url": "https://example.com/login",
+      "loginRequired": true,
+      "loginFields": {
+        "username": "#email",
+        "password": "#password",
+        "submit": "button[type='submit']"
+      }
+    },
+    "steps": [
+      {
+        "order": 1,
+        "action": "goto",
+        "target": "https://example.com/login",
+        "description": "打开登录页面"
+      },
+      {
+        "order": 2,
+        "action": "wait",
+        "target": 1000,
+        "description": "等待页面加载"
+      },
+      {
+        "order": 3,
+        "action": "fill",
+        "target": {
+          "selector": "#email",
+          "value": "user@example.com"
+        },
+        "description": "填写用户名"
+      },
+      {
+        "order": 4,
+        "action": "fill",
+        "target": {
+          "selector": "#password",
+          "value": "password123"
+        },
+        "description": "填写密码"
+      },
+      {
+        "order": 5,
+        "action": "click",
+        "target": "button[type='submit']",
+        "description": "点击登录按钮"
+      },
+      {
+        "order": 6,
+        "action": "wait",
+        "target": 3000,
+        "description": "等待登录完成"
+      }
+    ],
+    "resultExtraction": {
+      "type": "text",
+      "target": ".user-info"
+    }
+  }
+}

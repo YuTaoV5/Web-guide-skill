@@ -1,0 +1,77 @@
+{
+  "name": "JIF8 V2Ray 订阅获取",
+  "keywords": ["jif8", "JFCLOUD", "V2Ray", "订阅", "v2ray订阅", "获取订阅"],
+  "description": "自动登录 JFCLOUD (jif8.net) 并获取 V2Ray 订阅链接",
+  "createdAt": "2026-04-14T23:11:00.000Z",
+  "lastUsedAt": "2026-04-14T23:11:00.000Z",
+  "useCount": 0,
+  "steps": [
+    {
+      "action": "goto",
+      "target": "https://jif8.net/user",
+      "description": "打开 JFCLOUD 登录页面"
+    },
+    {
+      "action": "wait",
+      "target": 2000,
+      "description": "等待页面加载"
+    },
+    {
+      "action": "fill",
+      "target": {
+        "selector": "#email",
+          "value": "YOUR_EMAIL"
+      },
+      "description": "填写邮箱"
+    },
+    {
+      "action": "fill",
+      "target": {
+        "selector": "#password",
+        "value": "YOUR_PASSWORD"
+      },
+      "description": "填写密码"
+    },
+    {
+      "action": "click",
+      "target": ".login",
+      "description": "点击登录按钮"
+    },
+    {
+      "action": "wait",
+      "target": 5000,
+      "description": "等待登录完成"
+    },
+    {
+      "action": "scroll",
+      "target": 1200,
+      "description": "滚动到页面底部"
+    },
+    {
+      "action": "wait",
+      "target": 2000,
+      "description": "等待订阅区域加载"
+    },
+    {
+      "action": "evaluate",
+      "target": {
+        "fn": (buttonText) => {
+          const links = document.querySelectorAll('a');
+          for (let link of links) {
+            if (link.textContent.includes(buttonText)) {
+              return link.getAttribute('data-clipboard-text');
+            }
+          }
+          return null;
+        },
+        "args": ["V2Ray"]
+      },
+      "description": "提取 V2Ray 订阅链接"
+    }
+  ],
+  "accounts": {
+    "email": "YOUR_EMAIL",
+    "password": "YOUR_PASSWORD"
+  },
+  "expectedResult": "订阅链接 URL"
+}
